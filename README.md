@@ -1,27 +1,28 @@
-# Conqueror of Empires
-Conqueror of Empires is a turn-based strategy game where up to 4 local players battle to be victorious, by expanding their empires, and controlling units to conquer cities and attack the enemy.
 
-The game was inspired by [Polytopia](http://midjiwan.com/polytopia.html) and [Civilisation](https://civilization.com/) and made using python and pygame.  
-To download executables see [releases](https://github.com/Ben-Ryder/Conqueror-of-Empires/releases).
+# Gameplay Summery
 
-## Playing the Game
-#### From Source:  
-Run the `main.py` file from the repository root.
+* You are the intelligence cheif for a nation at war and need to assign resources toward espianage and reconisance and make decisions based on the gathered intelligence.
 
-#### Executables:  
-**Windows**  
-Run the `main.exe` file from the application folder.
+* Gathered intelligence can either be imprecise, or intetionally misleading.
 
-**Linux (Ubuntu/Debian)**  
-Run the `main` file from the application folder.  
-*Note: You may have to change the persmissions of the file to allow it to run as a program. See [here](https://askubuntu.com/questions/503558/i-cant-run-application-x-executable-files-in-ubuntu-14-04)*.
+* Random generated enemy movements
 
+* Predetermined maps, need to complete a compaign, no save scumming. 
 
-## Dependencies
-_(For source)_
-- Python (made with 3.6.5)
-- pygame (made with 1.9.4)  
-_Although it should work with all python 3 versions, and pygame versions. It just hasn't been tested with them._ 
+# Decisions
 
+* Setting
+* Civilian collateral damage?
+* Name "Enemy Uknown Unknown", Fog of War
+* Have commanders with different AI controlling troops
 
-_**Ben Ryder 2019**_
+# Execution
+
+1. Start with "Conqueror of Empires" codebase
+2. Create menu for first mission
+    1. Text screen to give back story
+    2. Menu to choose to spend money on intelligence
+    3. View map overlayed with intelligence
+    4. Deploy troops
+    5. Battle
+    6. Results

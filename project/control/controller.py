@@ -23,12 +23,16 @@ class ApplicationController:
         pygame.display.set_caption(constants.DISPLAY_NAME)
 
         # General Setup
-        self.state = "menu"
+        self.state = "info_dump"
         self.game_reference = None
 
     def run(self):
         while self.state != "quit":
-            if self.state == "menu":
+            
+            if self.state == "info_dump":
+                self.run_info_dump()
+
+            elif self.state == "menu":
                 self.run_menu()
 
             elif self.state == "load_game":
@@ -50,6 +54,10 @@ class ApplicationController:
 
     def run_menu(self):
         menu = menus.Menu(self.display)  # takes control while section running, control returns here after.
+        self.state = menu.get_state()
+
+    def run_info_dump(self):
+        menu = menus.InfoDump(self.display)  # takes control while section running, control returns here after.
         self.state = menu.get_state()
 
     def run_loadgame(self):

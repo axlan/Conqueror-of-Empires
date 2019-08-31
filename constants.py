@@ -6,7 +6,7 @@ import paths
 
 # Dev Version Text (Tries for git version, if cant get it, revert to version saved here)
 try:
-    if sys.version_info[0] < 3.5:
+    if sys.version_info[0] < 3:
         version = subprocess.check_output(["git", "describe", "--tags"]).strip()
     else:
         version = subprocess.run(["git", "describe", "--tags"], stdout=subprocess.PIPE).stdout.decode("utf-8")
@@ -18,6 +18,10 @@ except Exception:  # seems to be so dependent on system and versions, easier to 
 # configuration for pygame.display
 DISPLAY_NAME = "Conqueror of Empires"
 DISPLAY_SIZE = [1000, 700]
+
+INFO_DUMP_TEXT = '''Lorum Ipsum
+Penguin hat
+Fat Cat Rack'''
 
 # Map Config
 MAP_SIZE = [20, 20]  # ? might not be
