@@ -6,8 +6,6 @@
 # [Next]
 
 
-# Ben-Ryder 2019
-
 import pygame
 import pygame_gui
 from pygame_gui.panel import Panel

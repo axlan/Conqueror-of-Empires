@@ -151,6 +151,12 @@ CHAR_DIALOGUE_MAP = {
     'Comander': (paths.avatarPath + 'img_avatar.png' ,TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"]))
 }
 
+DEMO_SHOP_ITEMS = [
+    ('Farmer', 10, '''Old man Peters (you know the farmer)
+is a retired infantryman in the
+area. Paying for a secure call may
+reveal if there were troops visible.''')
+]
 
 # Cleanup unneeded to not pollute namespace.
 del x, y, width, height, MAP_PADDING

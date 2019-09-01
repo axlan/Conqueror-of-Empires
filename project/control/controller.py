@@ -32,6 +32,9 @@ class ApplicationController:
             if self.state == "info_dump":
                 self.run_info_dump()
 
+            elif self.state == "shop":
+                self.run_shop()
+
             elif self.state == "menu":
                 self.run_menu()
 
@@ -51,6 +54,10 @@ class ApplicationController:
                 raise Exception("Invalid Game State: %s" % self.state)
 
         self.quit()
+
+    def run_shop(self):
+        menu = menus.DemoShop(self.display)
+        self.state = menu.get_state()
 
     def run_menu(self):
         menu = menus.Menu(self.display)  # takes control while section running, control returns here after.

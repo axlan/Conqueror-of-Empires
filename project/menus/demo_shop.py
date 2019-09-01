@@ -5,24 +5,23 @@ import paths
 import constants
 
 import pygame_gui
-from project.menus.dialogue_panel import DialoguePanel
+from project.menus.intel_shop import IntelShop
 
-class InfoDump:
+class DemoShop:
     """ top section for user to pick state. new_game, leaderboard ..."""
     def __init__(self, display):
         self.display = display
-        self.state = "info_dump"
+        self.state = "shop"
         self.game_reference = None
 
-        self.dialog_panel = DialoguePanel(constants.INFO_DUMP_BRIEF_SETTING,
-                                          constants.INFO_DUMP_BRIEF_PAGES,
-                                          pygame.Rect(0, 0, 800, 600))
+        self.dialog_panel = IntelShop(constants.DEMO_SHOP_ITEMS,
+                                      pygame.Rect(0, 0, 800, 600))
 
 
         self.run()
 
     def run(self):
-        while self.state == "info_dump":
+        while self.state == "shop":
             self.handle_events()
             self.draw()
 
@@ -37,7 +36,7 @@ class InfoDump:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 self.dialog_panel.handle_click()
                 if self.dialog_panel.done:
-                    self.state = "shop"
+                    self.state = "menu"
 
                 
 
