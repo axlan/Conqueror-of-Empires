@@ -8,5 +8,11 @@ To actually get going I decided to set some small achievale goals:
 
 Looking into the program flow, I should add states to project/control/controller.py
 
+I decided to go a little overboard and make a more complex dialogue UI with protraits and some text custimization
+
+## 8/31
+
+Still working on Dialogue UI.
+Managed to get a decent first version with some advanced features done.
 
 

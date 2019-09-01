@@ -3,6 +3,9 @@
 import sys
 import subprocess
 import paths
+from pygame.color import Color
+from pygame_gui.text_style import TextStyle
+
 
 # Dev Version Text (Tries for git version, if cant get it, revert to version saved here)
 try:
@@ -18,10 +21,6 @@ except Exception:  # seems to be so dependent on system and versions, easier to 
 # configuration for pygame.display
 DISPLAY_NAME = "Conqueror of Empires"
 DISPLAY_SIZE = [1000, 700]
-
-INFO_DUMP_TEXT = '''Lorum Ipsum
-Penguin hat
-Fat Cat Rack'''
 
 # Map Config
 MAP_SIZE = [20, 20]  # ? might not be
@@ -43,17 +42,8 @@ ORIGIN = [GAME_RECT[2]/2 - TILE_HEIGHT + MAP_PADDING, MAP_PADDING]  # top map po
 
 # Global Constants
 COLOURS = {
-    "white": (255, 255, 255),
-    "black": (0, 0, 0),
-    "red": (255, 0, 0),
-    "orange": (255, 165, 0),
-    "yellow": (255, 220, 0),
-    "green": (0, 255, 0),
-    "blue": (0, 0, 255),
-    "indigo": (75, 0, 130),
-    "magenta": (255, 0, 255),
+    "panel": Color('black')
 }
-COLOURS["panel"] = COLOURS["black"]
 
 FONTS = {"main": paths.fontPath + "SourceSansPro-Light.ttf",
          "main-bold": paths.fontPath + "SourceSansPro-Semibold.ttf",
@@ -63,7 +53,7 @@ FONTS = {"main": paths.fontPath + "SourceSansPro-Light.ttf",
              {"large": 20,
               "medium": 15,
               "small": 12},
-         "colour": COLOURS["white"]}
+         "colour": Color('white')}
 
 # Game Data
 TILE_DATA = {
@@ -140,6 +130,26 @@ LEVELS = [
     [2, 2, 2, 2, 2, 2],  # 4 to 5
     [],  # 5 is max
 ]
+
+DIALOG_PANEL_PADDING = 5
+DIALOG_PANEL_TRANSPARENCY = 150
+DIALOG_PANEL_BACKGROUND = Color(1, 50, 32)
+DIALOG_PANEL_BORDER = Color(139, 0, 0)
+DIALOG_PANEL_SETTING_STYLE = TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"])
+DIALOG_PANEL_PORTRAIT_STYLE = TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"])
+
+
+INFO_DUMP_BRIEF_SETTING = 'Eastern Front Command Center'
+INFO_DUMP_BRIEF_PAGES = [
+    ('Comander', """If it isn't the chief intelligence officer?
+Guess you finally made it."""),
+    ('Comander', """As you'll soon see, we have the situation well in hand.
+You might as well see what information you can add,
+but I reckon we could line up like dominos and still capture this position"""),
+]
+CHAR_DIALOGUE_MAP = {
+    'Comander': (paths.avatarPath + 'img_avatar.png' ,TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"]))
+}
 
 
 # Cleanup unneeded to not pollute namespace.

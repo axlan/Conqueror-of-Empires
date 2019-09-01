@@ -24,7 +24,7 @@ class Text:
         graphic_texts = [ self.graphic_font.render(text, True, self.colour) for text in self.text_lines ]
         line_height = max([ text.get_rect().height for text in graphic_texts ])
         line_width = max([ text.get_rect().width for text in graphic_texts ])
-        self.graphic_text = pygame.Surface((line_width, line_height * len(graphic_texts)))
+        self.graphic_text = pygame.Surface((line_width, line_height * len(graphic_texts)), flags=pygame.SRCALPHA)
         for i, text in enumerate(graphic_texts):
             y = i * line_height
             self.graphic_text.blit(text, [0, y])

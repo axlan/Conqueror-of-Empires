@@ -8,3 +8,4 @@ from pygame_gui.entry import *
 from pygame_gui.cursor import *
 from pygame_gui.panel import *
 from pygame_gui.text_button import *
+from pygame_gui.text_style import *

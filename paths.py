@@ -13,6 +13,7 @@ imagePath = assetPath + "images" + os.sep
 
 tilePath = imagePath + os.sep + "tiles" + os.sep
 unitPath = imagePath + os.sep + "units" + os.sep
+avatarPath = imagePath + os.sep + "avatars" + os.sep
 
 uiPath = imagePath + os.sep + "UI" + os.sep  # general, throughout sections.
 uiMenuPath = imagePath + os.sep + "menu" + os.sep
