@@ -13,11 +13,14 @@ class IntelShop:
 
     DESRIPTION_WIDTH = 400
 
-    def __init__(self, items, rect):
+    def __init__(self, items, resources, rect):
         self.items = items
         self.rect = rect
         self.sel = None
+        self.resources = resources
         self.buy_buttons = []
+        self.bought = []
+        self.done = False
         self.done_button = None
         self.graphic = None
         self._construct_graphic()
@@ -65,6 +68,11 @@ class IntelShop:
                 18, constants.DIALOG_PANEL_SETTING_STYLE.color, constants.DIALOG_PANEL_SETTING_STYLE.font
             ))
             y += 30
+        r = pygame.Rect(0, 0, 100, 25)
+        r.right = self.rect.x + self.rect.width
+        r.bottom = self.rect.y + self.rect.height
+        self.done_button = TextButton(r, 150, 200, 'Done', 18, constants.DIALOG_PANEL_SETTING_STYLE.color, constants.DIALOG_PANEL_SETTING_STYLE.font)
+
 
         setting_box.draw(self.graphic)
         options_box.draw(self.graphic)
@@ -75,20 +83,27 @@ class IntelShop:
         return self.rect
 
     def handle_click(self):
-        pass
-        # if self.next_button.check_clicked():
-        #     if self.page < len(self.script) - 1:
-        #         self.page += 1
-        #         self._construct_graphic()
-        #     else:
-        #         self.done = True
+        if self.done_button.check_clicked():
+            self.done = True
+        for i, button in enumerate(self.buy_buttons):
+            if i not in self.bought and self.items[i][1] <= self.resources.cash and button.mouse_over():
+                self.bought.append(i)
+                self.resources.cash -= self.items[i][1]
             
 
     def draw(self, display):
         display.blit(self.graphic, [self.rect.x, self.rect.y])
+        resource_text = Text(f'Money Available: {self.resources.cash}',
+                              constants.DIALOG_PANEL_SETTING_STYLE.size,
+                              constants.DIALOG_PANEL_SETTING_STYLE.color,
+                              constants.DIALOG_PANEL_SETTING_STYLE.font,
+                              0, 0)
+        resource_text.x = self.rect.width - resource_text.get_rect().width - 5
+        resource_text.draw(display)
+        self.done_button.draw(display)
+        hover = False
         for i, button in enumerate(self.buy_buttons):
             button.draw(display)
-            hover = False
             if button.mouse_over():
                 hover = True
                 if i is not None and i != self.sel:
@@ -97,4 +112,11 @@ class IntelShop:
             if not hover and self.sel is not None:
                 self.sel = None
                 self._update_description()
+            if i in self.bought:
+                sold_text = Text(f'Sold Out',
+                                constants.DIALOG_PANEL_SETTING_STYLE.size + 6,
+                                Color('red'),
+                                constants.DIALOG_PANEL_SETTING_STYLE.font,
+                                100 + self.rect.x, 30 * (1 + i) + self.rect.y)
+                sold_text.draw(display)
 

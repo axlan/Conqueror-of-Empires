@@ -6,6 +6,7 @@ import constants
 
 import pygame_gui
 from project.menus.intel_shop import IntelShop
+from project.game.player_resources import PlayerResources
 
 class DemoShop:
     """ top section for user to pick state. new_game, leaderboard ..."""
@@ -14,7 +15,10 @@ class DemoShop:
         self.state = "shop"
         self.game_reference = None
 
+        self.resource = PlayerResources(10)
+
         self.dialog_panel = IntelShop(constants.DEMO_SHOP_ITEMS,
+                                      self.resource,
                                       pygame.Rect(0, 0, 800, 600))
 
 

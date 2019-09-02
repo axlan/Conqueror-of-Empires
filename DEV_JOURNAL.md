@@ -10,9 +10,11 @@ Looking into the program flow, I should add states to project/control/controller
 
 I decided to go a little overboard and make a more complex dialogue UI with protraits and some text custimization
 
-## 8/31
+## 9/1
 
 Still working on Dialogue UI.
 Managed to get a decent first version with some advanced features done.
 
+## 9/2
 
+Got shop dialogue working minimally.

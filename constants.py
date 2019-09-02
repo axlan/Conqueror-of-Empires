@@ -155,7 +155,9 @@ DEMO_SHOP_ITEMS = [
     ('Farmer', 10, '''Old man Peters (you know the farmer)
 is a retired infantryman in the
 area. Paying for a secure call may
-reveal if there were troops visible.''')
+reveal if there were troops visible.'''),
+    ('Spy Sat', 100000000, '''Top of the line spy sattelite.
+Capable of 10m resolution imaging''')
 ]
 
 # Cleanup unneeded to not pollute namespace.
