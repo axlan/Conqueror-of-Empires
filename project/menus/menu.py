@@ -136,7 +136,7 @@ class WebLink:
             constants.FONTS["sizes"]["medium"], constants.FONTS["colour"], constants.FONTS["main"],
             x, y)
         self.hover_text.graphic_font.set_underline(True)
-        self.hover_text.change_text(self.hover_text.text_lines)  # acts as update, font must be re-rendered to show underline.
+        self.hover_text.change_text(self.hover_text.text)  # acts as update, font must be re-rendered to show underline.
 
     def mouse_over(self):
         return self.rect.collidepoint(pygame.mouse.get_pos())

@@ -18,3 +18,11 @@ Managed to get a decent first version with some advanced features done.
 ## 9/2
 
 Got shop dialogue working minimally.
+Fixed refactored changes to make the main game work again.
+Started looking at the way the map is rendered.
+
+## 9/4
+
+Looking to make a custom map render
+
+

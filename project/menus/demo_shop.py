@@ -15,10 +15,10 @@ class DemoShop:
         self.state = "shop"
         self.game_reference = None
 
-        self.resource = PlayerResources(10)
+        self.resources = PlayerResources(10)
 
         self.dialog_panel = IntelShop(constants.DEMO_SHOP_ITEMS,
-                                      self.resource,
+                                      self.resources,
                                       pygame.Rect(0, 0, 800, 600))
 
 

@@ -1,5 +1,6 @@
 # Ben-Ryder 2019
 import pygame
+from pygame.locals import *
 import time
 
 import paths
@@ -341,7 +342,7 @@ class CityMenu:
     def draw(self, display):
         self.background_panel.draw(display)
 
-        pygame.draw.ellipse(display, constants.COLOURS[self.model_link.current_player.get_colour()],
+        pygame.draw.ellipse(display, Color(self.model_link.current_player.get_colour()),
                             [self.x + 10, self.y + 5, 15, 15])
         self.city_name_text.draw(display)
 
@@ -633,7 +634,7 @@ class MessageBase:
         if msg_title == "warning":
             self.title = pygame_gui.Text(
                 "WARNING!",
-                constants.FONTS["sizes"]["medium"], constants.COLOURS["red"], constants.FONTS["main"],
+                constants.FONTS["sizes"]["medium"], Color("red"), constants.FONTS["main"],
                 self.rect[0] + 5, self.rect[1] + 5)
         else:
             self.title = pygame_gui.Text(
@@ -800,7 +801,7 @@ class PlayerTracker:
 
     def draw(self, display):
         self.topleft_panel.draw(display)
-        pygame.draw.circle(display, constants.COLOURS[self.model_link.get_current_player().get_colour()], [10, 12], 7)
+        pygame.draw.circle(display, Color(self.model_link.get_current_player().get_colour()), [10, 12], 7)
         self.current_player_name_text.draw(display)
 
         self.player_values_panel.draw(display)
@@ -934,7 +935,7 @@ class MiniMap:
                             self.tile_size - self.padding*2, self.tile_size - self.padding*2]
                     if tile.current_holder is not None:
                         colour = tile.current_holder.get_colour()
-                        self.tiles.append(MiniMapTile(rect, constants.COLOURS[colour]))
+                        self.tiles.append(MiniMapTile(rect, Color(colour)))
                     else:
                         self.tiles.append(MiniMapTile(rect, (200, 200, 200)))
 
@@ -1140,7 +1141,7 @@ class LeaderboardSlot:
         self.panel.draw(display)
         self.rank.draw(display)
         pygame.draw.circle(display,
-                           constants.COLOURS[self.player_link.get_colour()],
+                           Color(self.player_link.get_colour()),
                            [int(self.rect[0] + 55), int(self.rect[1] + self.rect[3]/2)], 10)
         self.name.draw(display)
         self.cities.draw(display)
@@ -1422,7 +1423,7 @@ class WelcomeMessage:
         if msg_title == "warning":
             self.title = pygame_gui.Text(
                 "WARNING!",
-                constants.FONTS["sizes"]["medium"], constants.COLOURS["red"], constants.FONTS["main"],
+                constants.FONTS["sizes"]["medium"], Color("red"), constants.FONTS["main"],
                 self.rect[0] + 5, self.rect[1] + 5)
         else:
             self.title = pygame_gui.Text(

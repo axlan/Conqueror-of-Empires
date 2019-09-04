@@ -5,6 +5,7 @@ import pygame
 
 class Text:
     def __init__(self, text, size, colour, font, x, y):
+        self.text = text
         self.text_lines = text.split('\n')
         self.x = x
         self.y = y
@@ -35,6 +36,7 @@ class Text:
 
     def change_text(self, text):
         self.text = text
+        self.text_lines = text.split('\n')
         self._config_text()
 
     def draw(self, display):

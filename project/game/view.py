@@ -1,6 +1,7 @@
 # Ben-Ryder 2018
 
 import pygame
+from pygame.locals import *
 
 import project.game.isometric as isometric
 import project.game.surface as surface
@@ -24,7 +25,7 @@ class PhysicalGame:
 
         # General Setup (surface + camera)
         self.game_surface = surface.Surface(constants.GAME_RECT)
-        self.game_surface.main_surface.set_colorkey(constants.COLOURS["black"])  # so stars drawn to display first are seen
+        self.game_surface.main_surface.set_colorkey(Color("black"))  # so stars drawn to display first are seen
 
         # Map Setup
         self.world = VisualWorld(self.model)
@@ -144,8 +145,8 @@ class PhysicalGame:
         return False
 
     def draw(self, display):
-        display.fill(constants.COLOURS["black"])
-        self.game_surface.main_surface.fill(constants.COLOURS["black"])
+        display.fill(Color("black"))
+        self.game_surface.main_surface.fill(Color("black"))
 
         self.stars.draw(display)
         self.world.draw(self.game_surface.main_surface)

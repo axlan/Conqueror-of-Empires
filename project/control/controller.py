@@ -25,6 +25,7 @@ class ApplicationController:
         # General Setup
         self.state = "info_dump"
         self.game_reference = None
+        self.resources = None
 
     def run(self):
         while self.state != "quit":
@@ -58,6 +59,7 @@ class ApplicationController:
     def run_shop(self):
         menu = menus.DemoShop(self.display)
         self.state = menu.get_state()
+        self.resources = menu.resources
 
     def run_menu(self):
         menu = menus.Menu(self.display)  # takes control while section running, control returns here after.

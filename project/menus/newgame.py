@@ -2,6 +2,7 @@
 
 import os
 import pygame
+from pygame.locals import *
 import random
 
 import paths
@@ -55,7 +56,7 @@ class NewGame:
 
         self.game_name_error_text = pygame_gui.Text(
             "",
-            constants.FONTS["sizes"]["small"], constants.COLOURS["red"], constants.FONTS["main-bold-italic"],
+            constants.FONTS["sizes"]["small"], Color("red"), constants.FONTS["main-bold-italic"],
             self.origin[0] + 250, self.origin[1] + 180)
 
         # Map Input Setup
@@ -74,7 +75,7 @@ class NewGame:
 
         self.player_slots_error = pygame_gui.Text(
             "",
-            constants.FONTS["sizes"]["small"], constants.COLOURS["red"], constants.FONTS["main-bold-italic"],
+            constants.FONTS["sizes"]["small"], Color("red"), constants.FONTS["main-bold-italic"],
             self.origin[0] + 200, self.origin[1] + 255)
 
         self.player_manager = PlayerManager(4, [self.origin[0] + 100, self.origin[1] + 290])
@@ -272,7 +273,7 @@ class PlayerSlot:
         self.colour = colour
 
         # Background
-        self.back_panel = pygame_gui.Panel([self.origin[0], self.origin[1], 500, 50], 100, constants.COLOURS["black"])
+        self.back_panel = pygame_gui.Panel([self.origin[0], self.origin[1], 500, 50], 100, Color("black"))
 
         self.name_entry = pygame_gui.Entry(paths.uiMenuPath + "input-normal.png",
                                            paths.uiMenuPath + "input-normal-hover.png",
@@ -308,7 +309,7 @@ class PlayerSlot:
     def draw(self, display):
         self.back_panel.draw(display)
         self.name_entry.draw(display)
-        pygame.draw.ellipse(display, constants.COLOURS[self.colour], [self.origin[0]+330, self.origin[1]+10, 28, 28])
+        pygame.draw.ellipse(display, Color(self.colour), [self.origin[0]+330, self.origin[1]+10, 28, 28])
         self.delete_self.draw(display)
 
 

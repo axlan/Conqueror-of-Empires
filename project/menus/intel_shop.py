@@ -89,6 +89,7 @@ class IntelShop:
             if i not in self.bought and self.items[i][1] <= self.resources.cash and button.mouse_over():
                 self.bought.append(i)
                 self.resources.cash -= self.items[i][1]
+                self.resources.purchases.append(self.items[i][0])
             
 
     def draw(self, display):
