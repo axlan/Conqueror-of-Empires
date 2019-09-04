@@ -154,7 +154,7 @@ class PhysicalGame:
         if self.active_unit is not None:
             self.draw_action_overlay(self.active_unit)
 
-        self.draw_units()
+        #self.draw_units()
 
         self.game_surface.draw(display)
 

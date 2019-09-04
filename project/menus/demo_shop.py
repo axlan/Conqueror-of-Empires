@@ -40,9 +40,7 @@ class DemoShop:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 self.dialog_panel.handle_click()
                 if self.dialog_panel.done:
-                    self.state = "menu"
-
-                
+                    self.state = "tactics"
 
     def draw(self):
         self.display.fill(pygame.Color('black'))
