@@ -160,5 +160,9 @@ reveal if there were troops visible.'''),
 Capable of 10m resolution imaging''')
 ]
 
+DEMO_MAP_LAYOUT = {
+    'camera_center': [10, 10]
+}
+
 # Cleanup unneeded to not pollute namespace.
 del x, y, width, height, MAP_PADDING

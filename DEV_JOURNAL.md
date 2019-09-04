@@ -23,6 +23,10 @@ Started looking at the way the map is rendered.
 
 ## 9/4
 
-Looking to make a custom map render
+Looking to make a custom map render.
+I was able to strip out a bunch of the logic to get a simple board to display
+next step is to create a menu to show intelligence, and deploy available troops.
+Eventually the game states I'm working on should be a loop that gets fed the level ID
+and the load save logic would select the level or resume the current level.
 
 
