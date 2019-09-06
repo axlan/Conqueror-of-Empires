@@ -29,7 +29,10 @@
         "spawn_points": [{"x": 12, "y": 5}, {"x": 12, "y": 10}],
         "units": [{
             "unit_type": "scout",
-            "relative_position": {"x": 0, "y": 0}
+            "relative_position": {"x": 0, "y": 0},
+            "behavior": { "behavior_type": "MOVE", "args": {
+                "target": {"x": 12, "y": 5}
+            }}
         }]
     }]
 }

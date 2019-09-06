@@ -5,7 +5,7 @@ import subprocess
 import paths
 from pygame.color import Color
 from pygame_gui.text_style import TextStyle
-
+from enum import Enum, auto
 
 # Dev Version Text (Tries for git version, if cant get it, revert to version saved here)
 try:
@@ -142,6 +142,11 @@ DIALOG_PANEL_PORTRAIT_STYLE = TextStyle(FONTS["sizes"]["large"], FONTS["main"], 
 CHAR_DIALOGUE_MAP = {
     'Comander': (paths.avatarPath + 'img_avatar.png' ,TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"]))
 }
+
+class UnitBehaviorType(str, Enum):
+    MOVE = 'MOVE'
+    DEFEND = 'DEFEND'
+    ATTACK = 'ATTACK'
 
 # Cleanup unneeded to not pollute namespace.
 del x, y, width, height

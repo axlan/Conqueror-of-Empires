@@ -29,6 +29,6 @@
 3. Refactor
     1. Move into new repo
     2. Seperate UI into it's own repo
-    3. Wrap the control logic so that it can be reused for multiple levels
+    3. XXX Wrap the control logic so that it can be reused for multiple levels
     4. Add back in an initial menu with load / save
-    5. Move level descriptions and scripts to assets
+    5. XXX Move level descriptions and scripts to assets

@@ -32,3 +32,13 @@ and the load save logic would select the level or resume the current level.
 ## 9/6
 
 Working on adding overlay to show available spawn points.
+Refactored code to have a clearer concept of levels, and include JSON level description
+Added spawns of random enemy formations
+
+Need to figure out how to encode the properties of the items purchased. Maybe constant
+map like dialogue properties.
+
+First level will be an enemy scout on one side of the lake. Positioning yourself
+incorrectly will allow it to invade the city. Placing yourself correctly will block it.
+
+

@@ -24,6 +24,7 @@ class GameGui:
         self.game_view.spawn_select = level_data.player_spawn_points
         self.camera = scroll.Camera(self.display, self.game_view.game_surface, 25, 6)
         self.mini_map = MiniMap(self.model_link)
+        self.intelligence_menu = IntelligenceMenu(self.model_link.current_player, Rect(100,600, 200, 200))
 
         # GUI Setup
         # Fixed GUI
@@ -157,6 +158,7 @@ class GameGui:
             self.next_turn_message()  # next_turn action triggered at closing of GUI message, in the GUI.
         else:
             self.mini_map.handle_click()
+            self.intelligence_menu.handle_click()
 
     def launch_settlement_menu(self, tile_reference, position):
         self.passive_guis.append(CityMenu(self.model_link, self, tile_reference, position))
@@ -232,6 +234,7 @@ class GameGui:
         self.next_turn_button.draw(self.display)
 
         self.mini_map.draw(self.display)
+        self.intelligence_menu.draw(self.display)
 
         # Passive GUIs
         for item in self.passive_guis:
@@ -891,6 +894,52 @@ class MiniMapTile:
 
     def draw(self, display):
         self.background.draw(display)
+
+class IntelligenceMenu:
+
+    BORDER = 10
+
+    def __init__(self, player, rect):
+
+        self.player = player
+        self.rect = rect
+        self.is_visible = False
+        self.background = pygame_gui.Panel(
+            rect,
+            200,
+            constants.COLOURS["panel"])
+
+        # GUI Interaction
+        self.hide_button = pygame_gui.TextButton(
+            [self.rect.x, self.rect.y - 20, 100, 20],
+            220, 240,
+            "hide minimap", constants.FONTS["sizes"]["medium"], constants.FONTS["colour"], constants.FONTS["main"])
+
+        self.show_button = pygame_gui.TextButton(
+            [self.rect.x, constants.DISPLAY_SIZE[1] - 20, 100, 20],
+            200, 220,
+            "show minimap", constants.FONTS["sizes"]["medium"], constants.FONTS["colour"], constants.FONTS["main"])
+
+    def refresh(self):
+        self.__init__(self.player)
+
+    def handle_click(self):
+        if self.is_visible:
+            if self.hide_button.check_clicked():
+                self.is_visible = False
+        else:
+            if self.show_button.check_clicked():
+                self.is_visible = True
+
+    def draw(self, display):
+        if self.is_visible:
+            self.hide_button.draw(display)
+
+            self.background.draw(display)
+
+        else:
+            self.show_button.draw(display)
+
 
 
 class MiniMapCircle(MiniMapTile):
