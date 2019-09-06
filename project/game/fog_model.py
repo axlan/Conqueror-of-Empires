@@ -117,6 +117,14 @@ class Player:
     def add_unit(self, unit):
         self.units.append(unit)
 
+    def add_units(self, formations):
+        for formation in formations:
+            spawn_base = random.choice(formation.spawn_points)
+            for unit_pos in formation.units:
+                pos = unit_pos.relative_position.add(spawn_base)
+                unit = Unit(unit_pos.unit_type, (pos.x, pos.y), self)
+                self.units.append(unit)
+
     def delete_unit(self, unit):
         self.units.remove(unit)
 
@@ -181,3 +189,48 @@ class World:
 
     def get_format(self):
         return self.format
+
+
+
+class Unit:
+    def __init__(self, unit_type, position, owner):
+        self.type = unit_type
+        self.position = position
+
+        # Unit Specs
+        self.max_health = constants.UNIT_SPECS[unit_type]["max_health"]
+        self.health = self.max_health
+        self.attack = constants.UNIT_SPECS[unit_type]["attack"]
+        self.defence = constants.UNIT_SPECS[unit_type]["defence"]
+        self.movement = constants.UNIT_SPECS[unit_type]["movement"]
+        self.reach = constants.UNIT_SPECS[unit_type]["reach"]
+
+        self.allowed_moves = constants.UNIT_SPECS[unit_type]["moves"]
+
+        #  all set to True, so unit cannot act when it is spawned, must wait till next go (EFFECTIVELY BLOCKS SPAWN)
+        self.moved = True
+        self.attacked = True
+
+        self.owner = owner  # TODO: getters for attributes?
+
+    def move(self, position):
+        self.position = position
+        self.moved = True
+
+    def has_moved(self):
+        return self.moved
+
+    def has_attacked(self):
+        return self.attacked
+
+    def set_attacked(self):
+        self.attacked = True
+
+    def make_inactive(self):
+        self.set_attacked()
+        self.moved = True
+
+    def reset(self):
+        self.moved = False
+        self.attacked = False
+

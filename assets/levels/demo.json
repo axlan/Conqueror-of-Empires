@@ -24,5 +24,12 @@
     ],
     "map_name": "demo1",
     "camera_center": {"x": 8, "y": 4},
-    "spawn_points": [{"x": 8, "y": 5}]
+    "player_spawn_points": [{"x": 8, "y": 5}],
+    "enemy_formations": [{
+        "spawn_points": [{"x": 12, "y": 5}, {"x": 12, "y": 10}],
+        "units": [{
+            "unit_type": "scout",
+            "relative_position": {"x": 0, "y": 0}
+        }]
+    }]
 }

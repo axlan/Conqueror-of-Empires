@@ -21,7 +21,7 @@ class GameGui:
 
         # Game View Setup
         self.game_view = view.PhysicalGame(self.display, self.model_link, self)
-        self.game_view.spawn_select = level_data.spawn_points
+        self.game_view.spawn_select = level_data.player_spawn_points
         self.camera = scroll.Camera(self.display, self.game_view.game_surface, 25, 6)
         self.mini_map = MiniMap(self.model_link)
 

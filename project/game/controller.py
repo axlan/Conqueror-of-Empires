@@ -6,7 +6,7 @@ import project.game.gui as gui
 import project.menus.leaderboard as leaderboard
 import project.data as data
 import paths
-from project.game.fog_model import Model
+from project.game.fog_model import Model, Player
 
 
 class Controller:
@@ -15,6 +15,9 @@ class Controller:
         self.state = "game"
         self.display = display
         self.level_data = level_data
+
+        enemy = Player('enemy', 'red')
+        enemy.add_units(level_data.enemy_formations)
 
         # General Game Setup
         self.game_model = Model(player, self.level_data.map_name)
