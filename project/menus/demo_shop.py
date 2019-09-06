@@ -6,19 +6,19 @@ import constants
 
 import pygame_gui
 from project.menus.intel_shop import IntelShop
-from project.game.player_resources import PlayerResources
+from project.game.fog_model import Player
+from project.game.level_data import LevelData
+
 
 class DemoShop:
     """ top section for user to pick state. new_game, leaderboard ..."""
-    def __init__(self, display):
+    def __init__(self, display: pygame.Surface, player: Player, level_data: LevelData):
         self.display = display
         self.state = "shop"
         self.game_reference = None
 
-        self.resources = PlayerResources(10)
-
-        self.dialog_panel = IntelShop(constants.DEMO_SHOP_ITEMS,
-                                      self.resources,
+        self.dialog_panel = IntelShop(level_data.shop_items,
+                                      player,
                                       pygame.Rect(0, 0, 800, 600))
 
 

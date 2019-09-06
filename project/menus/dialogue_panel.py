@@ -39,9 +39,9 @@ class DialoguePanel:
                               border_color=constants.DIALOG_PANEL_BORDER,
                               border_size=2)
         y += 25
-        speaker = constants.CHAR_DIALOGUE_MAP[self.script[self.page][0]]
+        speaker = constants.CHAR_DIALOGUE_MAP[self.script[self.page].speaker]
         speaker_img = pygame_gui.Image(speaker[0], 0, y, 100, 100)
-        speaker_title = TextBox(self.script[self.page][0],
+        speaker_title = TextBox(self.script[self.page].speaker,
                               Rect(speaker_img.rect.width, y, 0, 0),
                               constants.DIALOG_PANEL_SETTING_STYLE,
                               TextAlignmentHoriz.CENTER,
@@ -51,7 +51,7 @@ class DialoguePanel:
                               border_size=2)
         # will be drawn on target surface each time so needs to account for self.rect offset
         y += speaker_img.rect.height
-        dialogue_box = TextBox(self.script[self.page][1],
+        dialogue_box = TextBox(self.script[self.page].dialogue,
                               Rect(0, y, self.rect.width, self.rect.height - y),
                               constants.DIALOG_PANEL_SETTING_STYLE,
                               background_color=constants.DIALOG_PANEL_BACKGROUND,

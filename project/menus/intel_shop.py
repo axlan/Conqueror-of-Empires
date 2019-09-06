@@ -8,16 +8,20 @@ from pygame_gui.text_button import TextButton
 from pygame_gui.text_box import TextBox, TextAlignmentHoriz, TextAlignmentVert
 import constants
 from pygame import Rect, Color
+from project.game.fog_model import Player
+from project.game.level_data import ShopItem
+from typing import List
+
 
 class IntelShop:
 
     DESRIPTION_WIDTH = 400
 
-    def __init__(self, items, resources, rect):
+    def __init__(self, items: List[ShopItem], player: Player, rect):
         self.items = items
         self.rect = rect
         self.sel = None
-        self.resources = resources
+        self.player = player
         self.buy_buttons = []
         self.bought = []
         self.done = False
@@ -31,7 +35,7 @@ class IntelShop:
         if self.sel is None:
             text = ''
         else:
-            text = self.items[self.sel][2]
+            text = self.items[self.sel].description
         description_box = TextBox(text,
                         Rect(self.rect.width - IntelShop.DESRIPTION_WIDTH, y, IntelShop.DESRIPTION_WIDTH, self.rect.height - y),
                         constants.DIALOG_PANEL_SETTING_STYLE,
@@ -64,7 +68,7 @@ class IntelShop:
             self.buy_buttons.append(TextButton(
                 r,
                 150, 200,
-                f'{item[0]}: ${item[1]}',
+                f'{item.name}: ${item.cost}',
                 18, constants.DIALOG_PANEL_SETTING_STYLE.color, constants.DIALOG_PANEL_SETTING_STYLE.font
             ))
             y += 30
@@ -86,15 +90,15 @@ class IntelShop:
         if self.done_button.check_clicked():
             self.done = True
         for i, button in enumerate(self.buy_buttons):
-            if i not in self.bought and self.items[i][1] <= self.resources.cash and button.mouse_over():
+            if i not in self.bought and self.items[i].cost <= self.player.cash and button.mouse_over():
                 self.bought.append(i)
-                self.resources.cash -= self.items[i][1]
-                self.resources.purchases.append(self.items[i][0])
+                self.player.cash -= self.items[i].cost
+                self.player.purchases.append(self.items[i].name)
             
 
     def draw(self, display):
         display.blit(self.graphic, [self.rect.x, self.rect.y])
-        resource_text = Text(f'Money Available: {self.resources.cash}',
+        resource_text = Text(f'Money Available: {self.player.cash}',
                               constants.DIALOG_PANEL_SETTING_STYLE.size,
                               constants.DIALOG_PANEL_SETTING_STYLE.color,
                               constants.DIALOG_PANEL_SETTING_STYLE.font,

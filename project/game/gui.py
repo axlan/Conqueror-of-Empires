@@ -13,7 +13,7 @@ import project.game.view as view
 
 class GameGui:
     """ interface between user and model. handles GUI elements, self.game-view handles map-level interactions."""
-    def __init__(self, control, display, model):
+    def __init__(self, control, display, model, level_data):
         self.control_link = control
         self.display = display
         self.model_link = model
@@ -21,6 +21,7 @@ class GameGui:
 
         # Game View Setup
         self.game_view = view.PhysicalGame(self.display, self.model_link, self)
+        self.game_view.spawn_select = level_data.spawn_points
         self.camera = scroll.Camera(self.display, self.game_view.game_surface, 25, 6)
         self.mini_map = MiniMap(self.model_link)
 
@@ -29,7 +30,8 @@ class GameGui:
         # Player Tracking GUI's
         self.player_tracker = PlayerTracker(self.model_link)
         self.player_tracker.update_player()  # current player at startup
-        self.update_camera_focus()  # to match start players last position before last save
+        #self.update_camera_focus()  # to match start players last position before last save
+        self.camera.set_position_tile_idx(level_data.camera_center)
 
         self.menu_button = pygame_gui.Button(paths.uiGamePath + "menu.png",
                                              paths.uiGamePath + "menu-hover.png",

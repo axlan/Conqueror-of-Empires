@@ -11,15 +11,16 @@ from project.game.fog_model import Model
 
 class Controller:
     """ the game creator object, Holds the model and view object, and runs the game."""
-    def __init__(self, display, level):
+    def __init__(self, display, player, level_data):
         self.state = "game"
         self.display = display
+        self.level_data = level_data
 
         # General Game Setup
-        self.game_model = Model(level)
+        self.game_model = Model(player, self.level_data.map_name)
 
         # View + GUI Setup
-        self.GUI = gui.GameGui(self, self.display, self.game_model)
+        self.GUI = gui.GameGui(self, self.display, self.game_model, self.level_data)
 
     def play(self):
         self.state = self.GUI.run()  # at finish, return new state wanted, either menu, quit or ended (game finished)

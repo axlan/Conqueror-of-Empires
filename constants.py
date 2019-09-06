@@ -139,30 +139,9 @@ DIALOG_PANEL_SETTING_STYLE = TextStyle(FONTS["sizes"]["large"], FONTS["main"], F
 DIALOG_PANEL_PORTRAIT_STYLE = TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"])
 
 
-INFO_DUMP_BRIEF_SETTING = 'Eastern Front Command Center'
-INFO_DUMP_BRIEF_PAGES = [
-    ('Comander', """If it isn't the chief intelligence officer?
-Guess you finally made it."""),
-    ('Comander', """As you'll soon see, we have the situation well in hand.
-You might as well see what information you can add,
-but I reckon we could line up like dominos and still capture this position"""),
-]
 CHAR_DIALOGUE_MAP = {
     'Comander': (paths.avatarPath + 'img_avatar.png' ,TextStyle(FONTS["sizes"]["large"], FONTS["main"], FONTS["colour"]))
 }
 
-DEMO_SHOP_ITEMS = [
-    ('Farmer', 10, '''Old man Peters (you know the farmer)
-is a retired infantryman in the
-area. Paying for a secure call may
-reveal if there were troops visible.'''),
-    ('Spy Sat', 100000000, '''Top of the line spy sattelite.
-Capable of 10m resolution imaging''')
-]
-
-DEMO_MAP_LAYOUT = {
-    'camera_center': [10, 10]
-}
-
 # Cleanup unneeded to not pollute namespace.
-del x, y, width, height, MAP_PADDING
+del x, y, width, height

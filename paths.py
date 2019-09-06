@@ -10,6 +10,7 @@ mapPath = dataPath + os.sep + "maps" + os.sep
 
 fontPath = assetPath + os.sep + "fonts" + os.sep
 imagePath = assetPath + "images" + os.sep
+levelPath = assetPath + os.sep + "levels" + os.sep
 
 tilePath = imagePath + os.sep + "tiles" + os.sep
 unitPath = imagePath + os.sep + "units" + os.sep

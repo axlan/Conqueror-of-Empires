@@ -9,11 +9,11 @@ import project.game.calculations as calculations
 
 class Model:
     """ holds all the data and interface to manipulate the game """
-    def __init__(self, map_name):  # only when creating new game
+    def __init__(self, player, map_name):  # only when creating new game
         self.map_name = map_name
         self.game_end = False
-        self.current_player = Player('player', 'green')
         self.world = World(self.map_name)  # assigns settlements to players
+        self.current_player = player
 
     def get_current_player(self):
         return self.current_player
@@ -38,6 +38,8 @@ class Player:
         self.ap = 3  # initial ap, not per turn. (first turn ap = self.ap + self.get_turn_ap()
         self.dead = False
         self.max_score = self.ap
+        self.cash = 10
+        self.purchases = []
 
         # self.wood = 0
         # self.stone = 0

@@ -1,0 +1,28 @@
+{
+    "brief_setting": "Eastern Front Command Center",
+    "brief_pages": [
+        { 
+            "speaker": "Comander", 
+            "dialogue": "If it isn\"t the chief intelligence officer?\nGuess you finally made it."
+        },
+        {
+            "speaker": "Comander",
+            "dialogue": "As you\"ll soon see, we have the situation well in hand.\nYou might as well see what information you can add,\nbut I reckon we could line up like dominos and still capture this position"
+        }
+    ],
+    "shop_items": [
+        {
+            "name": "Farmer",
+            "cost": 10,
+            "description": "Old man Peters (you know the farmer)\nis a retired infantryman in the\narea. Paying for a secure call may\nreveal if there were troops visible."
+        },
+        {
+            "name": "Spy Sat",
+            "cost": 100000000,
+            "description": "Top of the line spy sattelite.\nCapable of 10m resolution imaging"
+        }
+    ],
+    "map_name": "demo1",
+    "camera_center": {"x": 8, "y": 4},
+    "spawn_points": [{"x": 8, "y": 5}]
+}

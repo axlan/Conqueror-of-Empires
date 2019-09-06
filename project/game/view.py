@@ -31,8 +31,9 @@ class PhysicalGame:
         self.world = VisualWorld(self.model)
 
         # Focuses
-        self.tile_focus = None  # record of the current tile clicked
+        self.tile_focus = None  # recMAP_PADDINGord of the current tile clicked
         self.active_unit = None  # record of current unit clicked on
+        self.spawn_select = None
 
         # Units Image Setup
         self.unit_images = {
@@ -153,10 +154,17 @@ class PhysicalGame:
 
         if self.active_unit is not None:
             self.draw_action_overlay(self.active_unit)
+        if self.spawn_select is not None:
+            self.draw_spawn_overlay(self.spawn_select)
 
         #self.draw_units()
 
         self.game_surface.draw(display)
+
+    def draw_spawn_overlay(self, tiles):
+        for idx in tiles:
+            x, y = isometric.get_iso(idx.x, idx.y, self.game_surface.get_position())
+            self.game_surface.main_surface.blit(self.unit_action_images["move"], [x, y])
 
     def draw_units(self):
         for unit in self.model.all_units():

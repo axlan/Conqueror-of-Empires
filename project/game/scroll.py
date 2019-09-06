@@ -1,6 +1,7 @@
 # Ben-Ryder 2019
 
 import pygame
+import constants
 
 
 class Camera:
@@ -19,6 +20,9 @@ class Camera:
         self.right_margin = pygame.Rect(width-self.scroll_margin, 0, self.scroll_margin, height)
         self.bottom_margin = pygame.Rect(0, height-self.scroll_margin, width, self.scroll_margin)
         self.left_margin = pygame.Rect(0, 0, self.scroll_margin, height)
+
+    def set_position_tile_idx(self, position):
+        self.scroll_surface.rect.topleft = (-(constants.TILE_WIDTH*position.x + constants.MAP_PADDING), -(constants.TILE_HEIGHT*position.y + constants.MAP_PADDING))
 
     def set_position(self, position):
         self.scroll_surface.rect.topleft = position

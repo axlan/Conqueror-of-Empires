@@ -29,4 +29,6 @@ next step is to create a menu to show intelligence, and deploy available troops.
 Eventually the game states I'm working on should be a loop that gets fed the level ID
 and the load save logic would select the level or resume the current level.
 
+## 9/6
 
+Working on adding overlay to show available spawn points.

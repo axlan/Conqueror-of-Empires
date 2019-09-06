@@ -6,6 +6,8 @@ import paths
 import pygame
 import project.menus as menus
 import project.game.controller as game
+from project.game.level_data import LevelData
+from project.game.fog_model import Player
 
 
 class ApplicationController:
@@ -23,16 +25,21 @@ class ApplicationController:
         pygame.display.set_caption(constants.DISPLAY_NAME)
 
         # General Setup
-        self.state = "info_dump"
         self.game_reference = None
-        self.resources = None
+        self.player = None
+        self.level = 'demo'
+        self.state = "info_dump"
+
 
     def run(self):
+        
+        self.player = Player('player', 'green')
         while self.state != "quit":
             
+            self.level_data = LevelData.parse_file(paths.levelPath + self.level + '.json')
+
             if self.state == "info_dump":
                 self.run_info_dump()
-
             elif self.state == "shop":
                 self.run_shop()
             elif self.state == "tactics":
@@ -43,17 +50,15 @@ class ApplicationController:
         self.quit()
 
     def run_shop(self):
-        menu = menus.DemoShop(self.display)
+        menu = menus.DemoShop(self.display, self.player, self.level_data)
         self.state = menu.get_state()
-        self.resources = menu.resources
 
     def run_info_dump(self):
-        menu = menus.InfoDump(self.display)  # takes control while section running, control returns here after.
+        menu = menus.InfoDump(self.display, self.level_data)  # takes control while section running, control returns here after.
         self.state = menu.get_state()
 
     def run_tactics(self):
-        level = 'demo1'
-        running_game = game.Controller(self.display, level)
+        running_game = game.Controller(self.display, self.player, self.level_data)
         self.state = running_game.play()  # takes control, returns when game is complete.
         self.game_reference = None
 

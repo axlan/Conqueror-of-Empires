@@ -6,16 +6,17 @@ import constants
 
 import pygame_gui
 from project.menus.dialogue_panel import DialoguePanel
+from project.game.level_data import LevelData
 
 class InfoDump:
     """ top section for user to pick state. new_game, leaderboard ..."""
-    def __init__(self, display):
+    def __init__(self, display: pygame.Surface, level: LevelData):
         self.display = display
         self.state = "info_dump"
         self.game_reference = None
 
-        self.dialog_panel = DialoguePanel(constants.INFO_DUMP_BRIEF_SETTING,
-                                          constants.INFO_DUMP_BRIEF_PAGES,
+        self.dialog_panel = DialoguePanel(level.brief_setting,
+                                          level.brief_pages,
                                           pygame.Rect(0, 0, 800, 600))
 
 
